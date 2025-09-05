@@ -21,8 +21,14 @@ def addtweets(request):
 
 def addtweetbyform(request):
     if request.method == "POST":
-        print(request.POST)
-        return redirect(reverse('tweetapp:listtweets'))
+        form = AddTweetForm(request.POST)
+        if form.is_valid():
+            nickname = form.cleaned_data["name_input"]
+            massege = form.cleaned_data["massage_input"]
+            models.Tweet.objects.create(nick_name = nickname, massage = massege)
+            return redirect(reverse('tweetapp:listtweets'))
+        else:
+            return render(request, 'tweetapp/addtweetbyform.html',context={'form':form})
     else:
         form = AddTweetForm()
         return render(request, 'tweetapp/addtweetbyform.html',context={'form':form})    
