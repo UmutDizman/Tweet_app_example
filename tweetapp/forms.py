@@ -13,4 +13,4 @@ class AddTweetForm(forms.Form):
 class AddtweetModelForm(ModelForm):
         class Meta:
             model = Tweet
-            fields = ['nick_name','massage']
+            fields = ['username','massage']

@@ -8,4 +8,6 @@ urlpatterns = [
     path('addtweet/', views.addtweets, name='addtweets'),
     path('addtweetbyform/', views.addtweetbyform, name='addtweetbyform'),
     path('addtweetbymodelform/', views.addtweetmodelform, name='addtweetbymodelform'),
+    path('singup/',views.SingUpView.as_view(),name='singup'),
+    path("deletetweet/<int:id>",views.deletetweet, name='deletetweet'),
 ]
